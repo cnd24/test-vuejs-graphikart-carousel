@@ -1,4 +1,4 @@
-# todolist
+# Carousel - Suivi du tutoriel de Graphikart sur la mise en place d'un carousel en Vue.js
 
 ## Project setup
 ```
