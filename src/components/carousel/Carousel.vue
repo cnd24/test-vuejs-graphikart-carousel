@@ -2,9 +2,12 @@
     <div>
         <div class="carousel">
             <slot></slot>
-            <div class="carousel-btn">
-                <button class="carousel-nav carousel-prev" @click.prevent="prev"> Prec. </button>
-                <button class="carousel-nav carousel-next" @click.prevent="next"> Suiv. </button>
+            <button class="carousel-nav carousel-prev" @click.prevent="prev"> Prec. </button>
+            <button class="carousel-nav carousel-next" @click.prevent="next"> Suiv. </button>
+            <div class="carousel-pagination">
+                <button v-for="n in slidesCount" :key="n" @click.prevent="paginate(n-1)"
+                        :class="{active: n-1 == index}">
+                </button>
             </div>
         </div>
     </div>
@@ -16,13 +19,11 @@
             return {
                 index: 0,
                 slides: [],
+                direction: 'right',
             }
         },
         mounted() {
             this.slides = this.$children
-            this.slides.forEach((slide, i) => {
-                slide.index = i
-            })
         },
         computed: {
             slidesCount() {
@@ -32,16 +33,21 @@
         methods: {
             next() {
                 this.index++
+                this.direction = 'right'
                 if (this.index >= this.slidesCount) {
                     this.index = 0
                 }
             },
             prev() {
-
                 this.index--
+                this.direction = 'left'
                 if (this.index < 0) {
                     this.index = this.slidesCount - 1
                 }
+            },
+            paginate(n) {
+                this.direction = n > this.index ? 'right' : 'left'
+                this.index = n
             }
         }
     }

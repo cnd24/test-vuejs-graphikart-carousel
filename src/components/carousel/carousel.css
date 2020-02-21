@@ -2,14 +2,9 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
 }
 
-.carousel-btn {
-    display: flex;
-    flex-direction: row;
-    width: 60px;
-}
 
 .carousel-prev {
     background-color: #86c7ef;
@@ -44,3 +39,26 @@
     top: 50%;
     right: 10px;
 }
+
+.carousel-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.carousel-pagination button {
+    display: inline-block;
+    height: 15px;
+    background-color: #000;
+    opacity: 0.8;
+    border-radius: 10px;
+    margin: 0 2px;
+    border-style: none;
+}
+
+.carousel-pagination button.active {
+    background-color: #fff;
+}
+
